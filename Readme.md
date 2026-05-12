@@ -5,9 +5,9 @@ A cycle-driven simulation of the CXL.mem protocol stack, implementing the PathFi
 **"Understanding and Profiling CXL.mem Using PathFinder"**
 Xiao Li, Zerui Guo, Yuebin Bai, Mahesh Ketkar, Hugh Wilkinson, Ming Liu - ACM SIGCOMM 2025, Coimbra, Portugal 
 
-Paper: https://doi.org/10.1145/3718958.3750479
+Paper Link: https://doi.org/10.1145/3718958.3750479
 
-Arttfact: https://github.com/netlab-wisconsin/PathFinder
+Original Arttfact Link: https://github.com/netlab-wisconsin/PathFinder
 
 This project was built as part of a Bachelor's Thesis Project (BTP) to recreate and extend the paper's results through simulation, without access to physical CXL hardware.
 
@@ -68,7 +68,7 @@ cxl_pathfinder_sim/
 Python 3.10 or higher is recommended.
 
 ```bash
-git clone https://github.com//cxl-pathfinder-sim.git
+git clone https://github.com/AnnigandlaKameshwaraRao/cxl-pathfinder-sim
 cd cxl-pathfinder-sim
 python3 -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate

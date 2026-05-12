@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.env/
+.venv/
+ENV/
+
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+#other files
+*.zip
+*.docx
+calibrate.py

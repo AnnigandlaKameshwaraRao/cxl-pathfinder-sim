@@ -1,0 +1,89 @@
+name: "Intel Sapphire Rapids + Agilex CXL DIMM"
+
+cpu:
+  num_cores: 32
+  freq_ghz: 2.0
+  hyperthreading: false
+  turbo: false
+  num_sockets: 2
+  snc_enabled: true          # Sub-NUMA Clustering
+
+core:
+  sb_entries: 56             # Store buffer entries
+  lfb_entries: 20            # Line Fill Buffer entries
+  cacheline_bytes: 64
+
+  l1d:
+    size_kb: 48
+    associativity: 12
+    latency_cycles: 5
+    miss_penalty_cycles: 12
+
+  l2:
+    size_kb: 2048
+    associativity: 16
+    latency_cycles: 14
+    miss_penalty_cycles: 50
+
+cha:
+  num_cha: 64                # CHA slices per socket
+  llc_total_mb: 60           # LLC total per socket
+  llc_associativity: 12
+  llc_latency_cycles: 50     # LLC hit latency
+  llc_miss_penalty_cycles: 120
+  tor_entries: 128            # TOR queue depth per CHA
+  snoop_filter_entries: 4096
+
+mesh:
+  topology: "ring"
+  hop_latency_cycles: 3
+  num_stops: 32
+  bandwidth_gbps: 400
+
+imc:                         # Integrated Memory Controller (local DRAM)
+  num_channels: 8
+  rpq_depth: 64              # Read Pending Queue
+  wpq_depth: 64              # Write Pending Queue
+  cas_latency_cycles: 40
+
+local_dimm:
+  type: DDR5
+  size_gb: 256
+  num_dimms: 8
+  random_latency_ns: 103.2   # From paper: SPR local
+  bandwidth_gbps: 131.1       # From paper: SPR local BW
+  latency_cycles: 200         # At 2GHz
+
+m2pcie:                      # CXL Memory Controller (FlexBus side)
+  ingress_queue_depth: 32
+  egress_queue_depth: 32
+  num_endpoints: 1
+
+flexbus:
+  lanes: 16
+  gen: 2                     # PCIe Gen 2 underlying
+  flit_mode: "68B"
+  credit_pool: 64
+  link_latency_ns: 50        # One-way FlexBus traversal
+
+cxl_dimm:
+  type: "Intel Agilex I-Series"
+  size_gb: 16
+  ddr_type: DDR4
+  random_latency_ns: 355.3   # From paper: SPR CXL
+  bandwidth_gbps: 17.6        # From paper: SPR CXL BW
+  latency_cycles: 710         # At 2GHz approx
+  mem_req_packing_buf_depth: 16
+  mem_data_packing_buf_depth: 16
+  m2s_latency_cycles: 10     # M2S request processing
+  s2m_latency_cycles: 10     # S2M response processing
+  qos_thresholds:            # From CXL spec 3.0
+    light_load: 0.25
+    optimal_load: 0.50
+    moderate_overload: 0.75
+    severe_overload: 1.00
+
+simulation:
+  clock_cycles: 1_000_000    # Default sim length
+  snapshot_interval_cycles: 10_000
+  seed: 42

@@ -1,0 +1,18 @@
+PathFinder Simulation Summary  --  spr_agilex
+CXL ratio: 30%   Cycles: 200,000
+-------------------------------------------------------
+  Case  1      : OK   (51.1s)
+  Case  2      : OK   (97.0s)
+  Case  3      : OK   (33.4s)
+  Case  4      : OK   (51.6s)
+  Case  5      : OK   (8.2s)
+  Case  6      : OK   (29.6s)
+  Case  7      : OK   (12.4s)
+  Case  8 [NEW]: OK   (32.5s)
+  Case  9 [NEW]: OK   (12.3s)
+  Case 10 [NEW]: OK   (9.5s)
+  Case 11 [NEW]: OK   (26.9s)
+  Case 12 [NEW]: OK   (34.9s)
+
+Total time : 399.4s
+Figures    : results/

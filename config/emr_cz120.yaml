@@ -1,0 +1,89 @@
+name: "Intel Emerald Rapids + Micron CZ120 CXL DIMMs"
+
+cpu:
+  num_cores: 32
+  freq_ghz: 2.1
+  hyperthreading: false
+  turbo: false
+  num_sockets: 2
+  snc_enabled: true
+
+core:
+  sb_entries: 72
+  lfb_entries: 24
+  cacheline_bytes: 64
+
+  l1d:
+    size_kb: 48
+    associativity: 12
+    latency_cycles: 5
+    miss_penalty_cycles: 12
+
+  l2:
+    size_kb: 2048
+    associativity: 16
+    latency_cycles: 14
+    miss_penalty_cycles: 50
+
+cha:
+  num_cha: 64
+  llc_total_mb: 160           # EMR: 160MB LLC (much larger)
+  llc_associativity: 16
+  llc_latency_cycles: 50
+  llc_miss_penalty_cycles: 110
+  tor_entries: 128
+  snoop_filter_entries: 8192
+
+mesh:
+  topology: "ring"
+  hop_latency_cycles: 3
+  num_stops: 32
+  bandwidth_gbps: 500
+
+imc:
+  num_channels: 12
+  rpq_depth: 64
+  wpq_depth: 64
+  cas_latency_cycles: 38
+
+local_dimm:
+  type: DDR5
+  size_gb: 1536
+  num_dimms: 24
+  random_latency_ns: 98.0
+  bandwidth_gbps: 150.0
+  latency_cycles: 205
+
+m2pcie:
+  ingress_queue_depth: 64
+  egress_queue_depth: 64
+  num_endpoints: 4            # 4 CZ120 DIMMs
+
+flexbus:
+  lanes: 16
+  gen: 2
+  flit_mode: "256B"           # CZ120 uses 256B flits
+  credit_pool: 128
+  link_latency_ns: 40
+
+cxl_dimm:
+  type: "Micron CZ120"
+  size_gb: 256                # 4×64GB
+  ddr_type: DDR5
+  random_latency_ns: 320.0
+  bandwidth_gbps: 38.4
+  latency_cycles: 672
+  mem_req_packing_buf_depth: 32
+  mem_data_packing_buf_depth: 32
+  m2s_latency_cycles: 8
+  s2m_latency_cycles: 8
+  qos_thresholds:
+    light_load: 0.25
+    optimal_load: 0.50
+    moderate_overload: 0.75
+    severe_overload: 1.00
+
+simulation:
+  clock_cycles: 1_000_000
+  snapshot_interval_cycles: 10_000
+  seed: 42

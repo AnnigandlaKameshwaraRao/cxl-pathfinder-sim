@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ## Running the cases
 
-### Run all cases (paper's 7 + 5 new)
+### Run all cases (paper's 7 + 2 new)
 
 ```bash
 python3 run_cases.py
